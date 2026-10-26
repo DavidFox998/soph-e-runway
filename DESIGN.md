@@ -56,6 +56,15 @@ impostors (wrong colour, wrong form factor, wrong item, box-only). The gate
 must pass the true set and refuse every impostor; a tuning change that
 admits one impostor fails the set.
 
+Gate 4 sits behind a **swappable verifier interface** (landed Day 0,
+`src/runway/delivery.py`): the gate consumes a Measurement and never cares
+which backend produced it; the agent never supplies Gate 4's measurement —
+the gate calls the verifier itself. A stub verifier carries the loop today;
+the SAM 3.1 API verifier ships unconfigured (⇒ refuses `unmeasured`) until
+Appendix A verifies the hosted endpoint, and a self-host smoke test on GPU
+box time is the fallback track, not the plan of record: per the Official
+Rules, SAM 3.1 is a hosted Standard model on the Meta Model API.
+
 Demo mandate: a **matte red gooseneck kettle**, **$40 cap**.
 
 ### Sandbox ledger rail
