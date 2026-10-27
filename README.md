@@ -55,8 +55,10 @@ of this entry and none of its code is in this repository.
 
 ## Status
 
-Day 0 scaffold: receipt chain and the mandate/offer measurement core are
-implemented and tested; the remaining gates, the SAM 3.1 delivery check and
-the end-to-end loop land on the published build order in `DESIGN.md`.
+Day 0: the scaffold (schemas, receipt chain, gate cores, liveliness
+profiler) plus **Stage 1 of the build order — the Spark shopper skeleton**:
+mandate in, typed claim out, structurally unable to spend. The run wiring,
+the live heartbeat and the SAM 3.1 delivery check land per the stage
+sequence in `DESIGN.md`.
 
 *Motto: measured, not minted — proven, not asserted.*

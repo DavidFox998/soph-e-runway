@@ -105,11 +105,24 @@ not verify, refuses.
 - **Standard models only.** Muse Spark, SAM 3.1, Muse Image, Muse Wonder —
   Standard tier throughout; nothing Contributor-tier touches the build.
 
-## Build order (event window)
+## Build order (event window) — David's stage sequence, 2026-10-26
 
-1. Day 0 — scaffold, claim + receipt schemas, receipt chain, brain spec. ✅
-2. Gates 1–3 with the sandbox ledger rail; refusal-first tests.
-3. Gate 4: delivery photo set (true + named impostors), SAM 3.1 check.
-4. End-to-end loop on the demo mandate; brain wrapper live on the run.
-5. Gate 5 replay + receipt export; demo hardening.
-6. Freeze, rehearse, submit (deadline Nov 4, 9:00 PM ET).
+The five gates keep their names (Mandate / Offer / Payment / Delivery /
+Receipt). The build proceeds in David's stages:
+
+- **Stage 1 — Spark shopper skeleton.** Mandate in, typed claim out.
+  Wired so it can't spend, only propose: the spine everything bolts
+  onto. ✅ landed Day 0 (`client.py`, `shopper.py`).
+- **Stage 2 — Offer + Payment gates as the run's real path**, with the
+  hashed receipt chain started: every verdict appended as it happens.
+  (Gate code and chain exist from the scaffold; this stage wires them
+  into one run, plus the sandbox ledger rail.)
+- **Stage 3 — Heartbeat live.** The liveliness probes run mid-task, so
+  the demo shows the agent measuring itself from the very first run.
+  (Profiler exists from the scaffold; this stage runs the probes inside
+  the loop and puts the profile on screen and on chain.)
+- **Alongside, before Gate 4 — SAM 3.1 call-shape verification.** Nailed
+  down before the Delivery gate is built on it, not during.
+- **Then** Gate 4 on the verified SAM backend, Gate 5 replay + receipt
+  export, demo hardening, freeze, rehearse, submit (deadline
+  Nov 4, 9:00 PM ET).
