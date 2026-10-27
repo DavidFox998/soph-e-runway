@@ -59,20 +59,55 @@ class StubVerifier:
 class SamApiVerifier:
     """SAM 3.1 via the Meta Model API (hosted, Standard tier).
 
-    Deliberately unconfigured until Appendix A verifies the in-account
-    endpoint and model ID: until then measure() returns None and Gate 4
-    refuses everything as unmeasured rather than pretending to see.
+    The call shape was doc-verified 2026-10-26
+    (docs/sam-3.1-call-shape.md); the live probe decides the image
+    transport variant. Wire `sam_measure` (runway.sam.measure) and a
+    `photo_loader` to activate. Until wired, measure() returns None
+    and Gate 4 refuses everything as unmeasured rather than
+    pretending to see. Attributes SAM reports as AMBIGUOUS travel on
+    the measurement, and Gate 4 refuses them by name — ambiguous is
+    never silently converted into a mismatch or a pass.
     """
 
     name: str = "sam-3.1-api"
-    endpoint: str | None = None
-    model_id: str | None = None
+    item_label: str = "gooseneck kettle"
+    sam_measure: object = None    # callable(image_b64) -> Gate4Measurement
+    photo_loader: object = None   # callable(photo_ref) -> bytes
 
     def measure(self, photo_ref: str) -> Measurement | None:
-        if not self.endpoint or not self.model_id:
+        if self.sam_measure is None or self.photo_loader is None:
             return None
-        raise NotImplementedError(
-            "SAM API transport lands with the Appendix A verification"
+        import base64
+
+        photo = self.photo_loader(photo_ref)
+        gm = self.sam_measure(base64.b64encode(photo).decode())
+        attrs_in = gm.attributes
+        measured_attrs: dict[str, str] = {}
+        ambiguous: list[str] = []
+        colour = attrs_in.get("matte_red")
+        if colour is not None:
+            if colour.state == "ambiguous":
+                ambiguous.append("colour")
+            else:
+                measured_attrs["colour"] = (
+                    "matte red" if colour.present else "not matte red")
+        form = attrs_in.get("gooseneck_silhouette")
+        if form is not None:
+            if form.state == "ambiguous":
+                ambiguous.append("form")
+            else:
+                measured_attrs["form"] = (
+                    "gooseneck" if form.present else "not gooseneck")
+        present = attrs_in.get("present")
+        return Measurement(
+            measured_by="sam-3.1",
+            measured_value={
+                "item": self.item_label,
+                "attributes": measured_attrs,
+                "present": bool(present and present.present),
+                "ambiguous": ambiguous,
+            },
+            evidence_refs=[f"sam-raw:{gm.raw_ref}"],
         )
 
 
@@ -94,6 +129,10 @@ def gate_delivery(
     m = measurement.measured_value
     if not m.get("present", False):
         return _apply(claim, Verdict("refuse", gate, "item_absent"))
+    ambiguous = m.get("ambiguous") or []
+    if ambiguous:
+        # An undecidable attribute refuses by name; it never guesses.
+        return _apply(claim, Verdict("refuse", gate, f"ambiguous:{ambiguous[0]}"))
     if m.get("item") != mandate.item:
         return _apply(claim, Verdict("refuse", gate, "item_mismatch"))
     measured_attrs = m.get("attributes") or {}
