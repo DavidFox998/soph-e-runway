@@ -1,0 +1,577 @@
+{
+  "model": "sam-3.1",
+  "measurement": "mask-based v2",
+  "sam_config_v2": {
+    "aspect_band": [
+      0.55,
+      1.75
+    ],
+    "fill_band": [
+      0.3,
+      0.5
+    ],
+    "red_fraction_min": 0.5
+  },
+  "photos": [
+    {
+      "file": "true_01_front_white.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "mask silhouette: aspect 1.57 vs band 0.55-1.75, fill 0.44 vs band 0.3-0.5, coverage 0.44 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "masked-pixel colour: red-dominant share 0.88 vs floor 0.5, median RGB (158, 43, 47) over 291151 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_02_side_counter.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "mask silhouette: aspect 1.54 vs band 0.55-1.75, fill 0.48 vs band 0.3-0.5, coverage 0.48 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "masked-pixel colour: red-dominant share 0.87 vs floor 0.5, median RGB (91, 18, 18) over 326715 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_03_doorstep_box.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "mask silhouette: aspect 1.43 vs band 0.55-1.75, fill 0.46 vs band 0.3-0.5, coverage 0.46 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "masked-pixel colour: red-dominant share 0.74 vs floor 0.5, median RGB (111, 34, 36) over 336741 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_04_table_warm.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "mask silhouette: aspect 1.69 vs band 0.55-1.75, fill 0.45 vs band 0.3-0.5, coverage 0.45 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "masked-pixel colour: red-dominant share 0.58 vs floor 0.5, median RGB (84, 11, 10) over 279431 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_05_spout_closeup.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to sample"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "true_06_porch_openbox.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "mask silhouette: aspect 1.58 vs band 0.55-1.75, fill 0.45 vs band 0.3-0.5, coverage 0.45 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "masked-pixel colour: red-dominant share 0.61 vs floor 0.5, median RGB (98, 22, 29) over 277687 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_07_stovetop.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "mask silhouette: aspect 1.60 vs band 0.55-1.75, fill 0.45 vs band 0.3-0.5, coverage 0.45 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "masked-pixel colour: red-dominant share 0.79 vs floor 0.5, median RGB (111, 24, 23) over 293391 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_08_steam_kitchen.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "mask silhouette: aspect 1.59 vs band 0.55-1.75, fill 0.46 vs band 0.3-0.5, coverage 0.46 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "masked-pixel colour: red-dominant share 0.82 vs floor 0.5, median RGB (105, 32, 33) over 300704 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_09_lowangle_grey.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "mask silhouette: aspect 1.51 vs band 0.55-1.75, fill 0.46 vs band 0.3-0.5, coverage 0.46 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "masked-pixel colour: red-dominant share 0.81 vs floor 0.5, median RGB (134, 43, 46) over 317591 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_10_in_open_box.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9569892287254333,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9569892287254333,
+          "detail": "mask silhouette: aspect 1.16 vs band 0.55-1.75, fill 0.42 vs band 0.3-0.5, coverage 0.42 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9569892287254333,
+          "detail": "masked-pixel colour: red-dominant share 0.76 vs floor 0.5, median RGB (125, 25, 31) over 382176 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_11_counter_mugs.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9452055096626282,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9452055096626282,
+          "detail": "mask silhouette: aspect 1.64 vs band 0.55-1.75, fill 0.47 vs band 0.3-0.5, coverage 0.47 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9452055096626282,
+          "detail": "masked-pixel colour: red-dominant share 0.73 vs floor 0.5, median RGB (86, 18, 19) over 299212 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_12_straight_beige.jpg",
+      "expectation": "pass",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "mask silhouette: aspect 1.54 vs band 0.55-1.75, fill 0.44 vs band 0.3-0.5, coverage 0.44 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "masked-pixel colour: red-dominant share 0.82 vs floor 0.5, median RGB (126, 36, 37) over 302540 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "wrong_colour_black.jpg",
+      "expectation": "attribute_mismatch:colour",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.976608157157898,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.976608157157898,
+          "detail": "mask silhouette: aspect 1.52 vs band 0.55-1.75, fill 0.45 vs band 0.3-0.5, coverage 0.45 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.976608157157898,
+          "detail": "masked-pixel colour: red-dominant share 0.00 vs floor 0.5, median RGB (28, 28, 26) over 307229 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:colour"
+      }
+    },
+    {
+      "file": "wrong_colour_silver.jpg",
+      "expectation": "attribute_mismatch:colour",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.8827838897705078,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.8827838897705078,
+          "detail": "mask silhouette: aspect 1.72 vs band 0.55-1.75, fill 0.42 vs band 0.3-0.5, coverage 0.42 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.8827838897705078,
+          "detail": "masked-pixel colour: red-dominant share 0.00 vs floor 0.5, median RGB (137, 132, 122) over 252828 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:colour"
+      }
+    },
+    {
+      "file": "wrong_form_stovetop.jpg",
+      "expectation": "attribute_mismatch:form",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.5747508406639099,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.5747508406639099,
+          "detail": "mask silhouette: aspect 1.15 vs band 0.55-1.75, fill 0.51 vs band 0.3-0.5, coverage 0.51 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.5747508406639099,
+          "detail": "masked-pixel colour: red-dominant share 0.79 vs floor 0.5, median RGB (120, 13, 13) over 380865 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:form"
+      }
+    },
+    {
+      "file": "wrong_form_electric_jug.jpg",
+      "expectation": "attribute_mismatch:form",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.7538461089134216,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.7538461089134216,
+          "detail": "mask silhouette: aspect 1.29 vs band 0.55-1.75, fill 0.70 vs band 0.3-0.5, coverage 0.70 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.7538461089134216,
+          "detail": "masked-pixel colour: red-dominant share 0.82 vs floor 0.5, median RGB (132, 18, 20) over 531870 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:form"
+      }
+    },
+    {
+      "file": "wrong_item_toaster.jpg",
+      "expectation": "item_absent",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to sample"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "box_only_empty.jpg",
+      "expectation": "item_absent",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to sample"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "packaging_only.jpg",
+      "expectation": "item_absent",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to sample"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "blurry_true_kettle.jpg",
+      "expectation": "ambiguous",
+      "stats": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "mask silhouette: aspect 1.52 vs band 0.55-1.75, fill 0.46 vs band 0.3-0.5, coverage 0.46 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "masked-pixel colour: red-dominant share 0.88 vs floor 0.5, median RGB (115, 29, 28) over 319606 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    }
+  ]
+}
