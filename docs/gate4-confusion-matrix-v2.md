@@ -15,8 +15,8 @@ same in both versions.
 
 | Photo | Expected | v1 verdict | v2 verdict | The v2 measurement |
 |---|---|---|---|---|
-| true_01..04, 06..09, 11, 12 (10 photos) | pass | pass | **pass** | mask fill 0.44–0.48, red share 0.58–0.88 |
-| true_10_in_open_box | pass | refuse form (aspect 1.31*) | **pass** | mask aspect 1.16, fill 0.42, red 0.76 |
+| true_01, 02, 03, 06, 08, 09, 10, 12 (8 photos) | pass | pass | **pass** | mask fill 0.42–0.48, red share 0.61–0.88 |
+| true_04, true_07, true_11 | pass | refuse attribute_mismatch:form (box aspects 1.69 / 1.60 / 1.64 vs the v1 band's 1.6 ceiling) | **pass** | mask aspects inside the recalibrated band (0.55–1.75), fill 0.45–0.47, red 0.58–0.79 |
 | true_05_spout_closeup | pass | refuse item_absent | refuse item_absent | SAM returns no complete-kettle record for the tight crop, in both versions |
 | wrong_colour_black | refuse colour | **PASS (unsafe)** | **refuse attribute_mismatch:colour** | red share **0.00** over the mask, median RGB (28, 28, 26) |
 | wrong_colour_silver | refuse (ambiguous in v1's terms) | refuse ambiguous:colour | **refuse attribute_mismatch:colour** | red share **0.00**, median (137, 132, 122) — measured silver, no longer ambiguous |
@@ -24,9 +24,6 @@ same in both versions.
 | wrong_form_electric_jug | refuse form | **PASS (unsafe)** | **refuse attribute_mismatch:form** | mask fill **0.70** |
 | wrong_item_toaster / box_only_empty / packaging_only | refuse item_absent | refuse item_absent | refuse item_absent | 0 item records, as before |
 | blurry_true_kettle | ambiguous | PASS | PASS | red share 0.88, fill 0.46 — SAM + mask are blur-robust; see below |
-
-*true_10's v1 row: in the v1 matrix it refused on the box-aspect
-band edge; the mask's own aspect (1.16) sits inside the band.
 
 ## The two measurements that did the work
 
