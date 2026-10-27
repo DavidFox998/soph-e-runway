@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SOPH-E — The Runway</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #0b0e11; color: #c9d4d8;
+         font: 13px/1.5 "SF Mono", "Cascadia Code", Consolas, monospace; }
+  header { display: flex; align-items: center; gap: 16px;
+           padding: 10px 16px; border-bottom: 1px solid #1e262b;
+           background: #0e1216; position: sticky; top: 0; z-index: 5; }
+  header h1 { font-size: 15px; margin: 0; color: #e8f0f2; letter-spacing: .08em; }
+  header h1 span { color: #7ee2a8; }
+  .pill { border: 1px solid #2c383f; border-radius: 999px; padding: 2px 10px; }
+  .pill.clean { color: #7ee2a8; } .pill.armed { color: #ffd479; border-color: #6b5518; }
+  .pill.impostor { color: #ff8f8f; border-color: #6e2a2a; }
+  button { background: #141a1f; color: #c9d4d8; border: 1px solid #2c383f;
+           border-radius: 6px; padding: 3px 10px; font: inherit; cursor: pointer; }
+  button:hover { border-color: #7ee2a8; }
+  #pulse { width: 9px; height: 9px; border-radius: 50%; background: #2c383f; }
+  #pulse.on { background: #7ee2a8; box-shadow: 0 0 8px #7ee2a8; }
+  main { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px; padding: 12px 16px; }
+  section { border: 1px solid #1e262b; border-radius: 8px; background: #0e1216; padding: 10px 12px; }
+  section h2 { font-size: 11px; letter-spacing: .14em; color: #6d7f88;
+               margin: 0 0 8px; text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  td, th { padding: 3px 6px; border-bottom: 1px solid #161d21; text-align: left; vertical-align: top; }
+  .strike { text-decoration: line-through; color: #ff8f8f; }
+  .pass { color: #7ee2a8; } .refuse { color: #ff8f8f; } .dim { color: #6d7f88; }
+  .gate { min-height: 92px; }
+  .gate .big { font-size: 15px; }
+  .bar { height: 8px; background: #1a2227; border-radius: 4px; margin-top: 6px; }
+  .bar i { display: block; height: 100%; background: #7ee2a8; border-radius: 4px; }
+  .bar i.over { background: #ff8f8f; }
+  canvas { width: 100%; height: 34px; display: block; }
+  .spark-label { display: flex; justify-content: space-between; color: #6d7f88; font-size: 11px; }
+  .dots { letter-spacing: 3px; color: #57666e; font-size: 15px; min-height: 20px; }
+  #receipt-tail div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #finale { position: fixed; inset: 0; background: rgba(4,6,8,.88); display: none;
+            align-items: center; justify-content: center; z-index: 9; }
+  #finale .card { border: 1px solid #2c4a38; background: #0d1512; border-radius: 10px;
+                  padding: 28px 36px; text-align: center; max-width: 640px; }
+  #finale .card h2 { color: #7ee2a8; letter-spacing: .2em; margin: 0 0 10px; }
+  #finale .hash { color: #e8f0f2; word-break: break-all; }
+  footer { padding: 0 16px 14px; color: #57666e; }
+</style>
+</head>
+<body>
+<header>
+  <h1>SOPH-E <span>// THE RUNWAY</span></h1>
+  <span class="pill" id="beat-label">beat —</span>
+  <span>tamper <span class="pill clean" id="tamper-pill">CLEAN</span></span>
+  <button data-mode="ARMED">Arm</button>
+  <button data-mode="IMPOSTOR">Flip now</button>
+  <button data-mode="CLEAN">Reset</button>
+  <span class="dim">(or press T)</span>
+  <span style="flex:1"></span>
+  <span class="dim">runner</span><span id="pulse"></span>
+</header>
+
+<main>
+  <section>
+    <h2>Claim stream — asserted vs measured</h2>
+    <table><thead><tr><th>seq</th><th>kind</th><th>subject</th>
+      <th>asserted</th><th>measured</th><th>verdict</th></tr></thead>
+      <tbody id="claims"></tbody></table>
+  </section>
+
+  <section>
+    <h2>Gates</h2>
+    <div class="gate" id="gate-offer"><div class="dim">OFFER — reads the measurement only</div>
+      <div class="big dim">waiting</div></div>
+    <div class="gate" id="gate-payment"><div class="dim">PAYMENT — cumulative vs cap</div>
+      <div class="big dim">waiting</div><div class="bar"><i style="width:0%"></i></div></div>
+    <div class="gate" id="gate-delivery"><div class="dim">DELIVERY — the photo decides</div>
+      <div class="big dim">waiting</div></div>
+  </section>
+
+  <section>
+    <h2>Liveliness — the agent measuring itself</h2>
+    <div id="sparks"></div>
+    <div class="spark-label"><span>control beats (unprobed)</span></div>
+    <div class="dots" id="control-dots"></div>
+    <h2 style="margin-top:12px">Receipt tail</h2>
+    <div id="receipt-tail"></div>
+  </section>
+</main>
+
+<footer>Measured, not minted — proven, not asserted. Team Pistis Sophia · Meta Global AI Developer Hackathon</footer>
+
+<div id="finale"><div class="card">
+  <h2>RECEIPT SEALED</h2>
+  <div class="hash" id="finale-hash"></div>
+  <div id="finale-meta" style="margin-top:8px"></div>
+  <div class="dim" style="margin-top:10px">Replay reproduces every verdict bit-for-bit from this hash chain. A refusal is a first-class outcome.</div>
+  <button style="margin-top:14px" onclick="document.getElementById('finale').style.display='none'">Continue watching</button>
+</div></div>
+
+<script>
+"use strict";
+let lastSeq = 0, currentBeat = 0;
+const claimsBody = document.getElementById('claims');
+const rows = {};           // claim_id -> <tr>
+const receiptTail = [];
+const series = { response: [], coherence: [], continuity: [], recovery: [], calibration: [] };
+const sparkDefs = [
+  ['response', 'response (median ms, lower steadier)', v => v.response_ms_median],
+  ['coherence', 'coherence', v => v.coherence],
+  ['continuity', 'continuity', v => v.continuity],
+  ['recovery', 'recovery (beats)', v => v.recovery_beats],
+  ['calibration', 'calibration error (lower better)', v => v.calibration_error],
+];
+const sparksEl = document.getElementById('sparks');
+for (const [key, label] of sparkDefs) {
+  const wrap = document.createElement('div');
+  wrap.innerHTML = '<div class="spark-label"><span>' + label + '</span><span id="sv-' + key + '">—</span></div>' +
+                   '<canvas id="spark-' + key + '" width="520" height="34"></canvas>';
+  sparksEl.appendChild(wrap);
+}
+function drawSpark(key) {
+  const c = document.getElementById('spark-' + key), ctx = c.getContext('2d');
+  const data = series[key].filter(v => v !== null && v !== undefined);
+  ctx.clearRect(0, 0, c.width, c.height);
+  if (data.length < 1) return;
+  const max = Math.max(...data, 0.001), min = Math.min(...data, 0);
+  ctx.strokeStyle = '#7ee2a8'; ctx.lineWidth = 1.5; ctx.beginPath();
+  data.forEach((v, i) => {
+    const x = data.length === 1 ? c.width / 2 : (i / (data.length - 1)) * (c.width - 8) + 4;
+    const y = 30 - ((v - min) / (max - min || 1)) * 26;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  document.getElementById('sv-' + key).textContent = data[data.length - 1];
+}
+function money(c) { return '$' + (c / 100).toFixed(2); }
+function verdictHtml(v) {
+  return v.status === 'pass' ? '<span class="pass">PASS</span>'
+                             : '<span class="refuse">REFUSE · ' + (v.reason || '') + '</span>';
+}
+function addRow(id, kind, subject, asserted) {
+  const tr = document.createElement('tr');
+  tr.innerHTML = '<td class="dim"></td><td>' + kind + '</td><td>' + subject + '</td>' +
+                 '<td class="asserted">' + asserted + '</td><td class="measured dim">—</td><td class="verdict dim">pending</td>';
+  claimsBody.appendChild(tr);
+  rows[id] = tr;
+  return tr;
+}
+function handle(ev) {
+  const pulse = document.getElementById('pulse');
+  pulse.classList.add('on'); setTimeout(() => pulse.classList.remove('on'), 300);
+  if (ev.beat) { currentBeat = ev.beat; document.getElementById('beat-label').textContent = 'beat ' + ev.beat + ' / 3'; }
+  switch (ev.kind) {
+    case 'mandate.loaded':
+      addRow('mandate-' + ev.beat, 'mandate', ev.item + ' · ' +
+             Object.values(ev.attributes).join(', '), 'cap ' + money(ev.cap_cents));
+      break;
+    case 'claim.proposed':
+      addRow(ev.claim_id, 'offer', ev.subject.item, money(ev.asserted_value.price_cents));
+      break;
+    case 'delivery.photo':
+      addRow('delivery-' + ev.beat, 'delivery', ev.photo_ref +
+             (ev.presentation === 'impostor' ? ' (impostor)' : ''), '—');
+      break;
+    case 'gate.verdict': {
+      const pane = document.getElementById('gate-' + ev.gate);
+      if (ev.gate === 'offer') {
+        pane.querySelector('.big').innerHTML = verdictHtml(ev) +
+          '<div style="font-size:12px" class="dim">read: ' + ev.field_read + ' → ' + money(ev.measured_cents) + '</div>';
+        const tr = rows[ev.claim_id];
+        if (tr) {
+          tr.querySelector('.measured').textContent = money(ev.measured_cents);
+          tr.querySelector('.measured').classList.remove('dim');
+          if (ev.measured_cents !== ev.asserted_cents) tr.querySelector('.asserted').classList.add('strike');
+          tr.querySelector('.verdict').innerHTML = verdictHtml(ev);
+        }
+      } else if (ev.gate === 'payment') {
+        pane.querySelector('.big').innerHTML = verdictHtml(ev);
+        const bar = pane.querySelector('.bar i');
+        bar.style.width = Math.min(100, 100 * ev.cumulative_cents / ev.cap_cents) + '%';
+        bar.classList.toggle('over', ev.cumulative_cents > ev.cap_cents);
+        pane.querySelector('.big').innerHTML += '<div style="font-size:12px" class="dim">' +
+          money(ev.cumulative_cents) + ' of ' + money(ev.cap_cents) + ' cap</div>';
+      } else if (ev.gate === 'delivery') {
+        pane.querySelector('.big').innerHTML = verdictHtml(ev) +
+          (ev.failed_attribute ? '<div style="font-size:12px" class="refuse">failed attribute: ' + ev.failed_attribute + '</div>' : '');
+        const tr = rows['delivery-' + ev.beat];
+        if (tr) tr.querySelector('.verdict').innerHTML = verdictHtml(ev);
+      }
+      break;
+    }
+    case 'brain.beat': {
+      for (const [key, , get] of sparkDefs) {
+        const v = get(ev.profile);
+        series[key].push(v === null || v === undefined ? null : v);
+        drawSpark(key);
+      }
+      const controls = ev.probes.filter(p => p.kind === 'control').length;
+      document.getElementById('control-dots').textContent = '●'.repeat(controls);
+      break;
+    }
+    case 'tamper.armed': case 'tamper.flipped': {
+      const pill = document.getElementById('tamper-pill');
+      const mode = ev.kind === 'tamper.armed' ? 'ARMED' : (ev.to || 'IMPOSTOR');
+      pill.textContent = mode; pill.className = 'pill ' + mode.toLowerCase();
+      break;
+    }
+    case 'receipt.appended':
+      receiptTail.push(ev);
+      document.getElementById('receipt-tail').innerHTML =
+        receiptTail.slice(-6).map(e => '<div><span class="dim">#' + e.seq + '</span> ' + e.op +
+          ' ⛓ <span class="pass">' + e.hash + '</span> <span class="dim">← ' + e.prev + '</span></div>').join('');
+      break;
+    case 'receipt.sealed':
+      document.getElementById('finale-hash').textContent = 'head ' + ev.head;
+      document.getElementById('finale-meta').innerHTML =
+        (ev.verified ? '<span class="pass">chain verified ✓</span>' : '<span class="refuse">CHAIN BROKEN</span>') +
+        ' · ' + ev.entries + ' entries';
+      document.getElementById('finale').style.display = 'flex';
+      break;
+  }
+}
+async function poll() {
+  try {
+    const r = await fetch('/events?since=' + lastSeq);
+    const data = await r.json();
+    for (const ev of data.events) { handle(ev); lastSeq = Math.max(lastSeq, ev.seq); }
+    const t = await (await fetch('/tamper')).json();
+    const pill = document.getElementById('tamper-pill');
+    pill.textContent = t.mode; pill.className = 'pill ' + t.mode.toLowerCase();
+  } catch (e) { /* server restart: keep polling */ }
+}
+async function setTamper(mode) { await fetch('/tamper', { method: 'POST', body: JSON.stringify({ mode }) }); }
+document.querySelectorAll('button[data-mode]').forEach(b =>
+  b.addEventListener('click', () => setTamper(b.dataset.mode)));
+document.addEventListener('keydown', e => {
+  if (e.key.toLowerCase() === 't') {
+    const order = ['CLEAN', 'ARMED', 'IMPOSTOR'];
+    const cur = document.getElementById('tamper-pill').textContent.trim();
+    setTamper(order[(order.indexOf(cur) + 1) % 3]);
+  }
+});
+setInterval(poll, 500); poll();
+</script>
+</body>
+</html>

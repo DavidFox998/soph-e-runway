@@ -4,3 +4,6 @@ __pycache__/
 .venv/
 dist/
 *.egg-info/
+demo/events.jsonl
+demo/receipt.jsonl
+demo/tamper_state.json
