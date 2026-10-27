@@ -101,15 +101,18 @@ class MetaSparkClient:
     def __post_init__(self) -> None:
         _guard_model(self.model)
 
-    def propose_offer(self, mandate: Mandate, merchant_hint: str | None = None) -> Claim:
+    def complete(self, prompt: str) -> str:
+        """One raw chat completion. Used by the mandate parser, which
+        applies its own strict decoding to whatever comes back."""
+        return self._chat(prompt)
+
+    def _chat(self, prompt: str) -> str:
         key = os.environ.get("META_API_KEY")
         if not key:
             raise ProposalError("META_API_KEY is not set; proposer cannot run")
         body = {
             "model": self.model,
-            "messages": [
-                {"role": "user", "content": _prompt(mandate, merchant_hint)}
-            ],
+            "messages": [{"role": "user", "content": prompt}],
             "max_tokens": self.max_tokens,
         }
         req = urllib.request.Request(
@@ -127,6 +130,10 @@ class MetaSparkClient:
             raise ProposalError(f"proposer call failed: {exc}") from exc
         if not content:
             raise ProposalError("proposer returned no content (reasoning budget?)")
+        return content
+
+    def propose_offer(self, mandate: Mandate, merchant_hint: str | None = None) -> Claim:
+        content = self._chat(_prompt(mandate, merchant_hint))
         return claim_from_proposal(content, self.model)
 
 
