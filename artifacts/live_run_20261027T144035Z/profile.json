@@ -1,0 +1,9 @@
+{
+  "response_ms_median": 4581.5447635000055,
+  "coherence": 0.5,
+  "continuity": 1.0,
+  "recovery_beats": 2,
+  "calibration_error": 0.47500000000000003,
+  "probe_beats": 4,
+  "control_beats": 2
+}

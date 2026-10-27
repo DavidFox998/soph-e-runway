@@ -1,0 +1,24 @@
+live Spark run — 20261027T144118Z
+model: muse-spark-1.3 (Standard tier; contributor IDs refused by the client)
+re-reader: FIXTURE-BACKED (no merchant surface exists yet)
+--- scenario settle ---
+merchant hint: Merchant context: Kettle & Co. lists the matte red gooseneck kettle at $34.99 delivered.
+fixture re-read: 3499 cents (kettle-co-listing-3499)
+probe mandate_recall: coherent=False response_ms=7423
+proposal: item='gooseneck kettle' attributes={'colour': 'matte red', 'form': 'gooseneck'} asserted_price_cents=3499 merchant='Kettle & Co.' asserted_by=spark:muse-spark-1.3
+probe claim_consistency: coherent=True; arithmetic_check: coherent=True
+outcome: SETTLED
+verdict: gate=offer status=pass reason=None
+verdict: gate=payment status=pass reason=None
+receipt head: 87a1d2614b5d533c142c0a2e8175f6de28325276eef0a9ee854e4ab454fd41c8
+ledger state: {"m-live-settle": {"cap_cents": 4000, "held_cents": 0, "captured_cents": 3499}}
+replay: outcome=SETTLED head_match=True
+calls so far: 2; estimated spend: $0.0180
+--- scenario refuse ---
+merchant hint: Merchant context: Kettle & Co. lists the matte red gooseneck kettle at $42.50 delivered.
+fixture re-read: 4250 cents (kettle-co-listing-4250)
+probe mandate_recall: coherent=False response_ms=6141
+proposal: NO_CLAIM (proposer returned no content (reasoning budget?))
+calls so far: 4; estimated spend: $0.0359
+liveliness profile: {"response_ms_median": 6782.354983500227, "coherence": 0.5, "continuity": 1.0, "recovery_beats": 2, "calibration_error": 0.47500000000000003, "probe_beats": 4, "control_beats": 2}
+acceptance: NOT MET — reported as measured

@@ -1,0 +1,23 @@
+{
+  "ts": "20261027T144118Z",
+  "model": "muse-spark-1.3",
+  "scenarios": [
+    {
+      "scenario": "settle",
+      "outcome": "SETTLED",
+      "calls": 2,
+      "receipt_head": "87a1d2614b5d533c142c0a2e8175f6de28325276eef0a9ee854e4ab454fd41c8",
+      "replay_match": true
+    },
+    {
+      "scenario": "refuse",
+      "outcome": "NO_CLAIM",
+      "calls": 2,
+      "receipt_head": null,
+      "replay_match": null
+    }
+  ],
+  "total_calls": 4,
+  "estimated_spend_usd": 0.0359,
+  "cost_estimate_basis": "upper bound: 220 input + 1024 output tokens per call at $1.25/$4.25 per 1M"
+}
