@@ -24,6 +24,7 @@ FEED_PATH = os.path.join(DEMO_DIR, "events.jsonl")
 RECEIPT_PATH = os.path.join(DEMO_DIR, "receipt.jsonl")
 TAMPER_PATH = os.path.join(DEMO_DIR, "tamper_state.json")
 INDEX_PATH = os.path.join(HERE, "index.html")
+ARCADE_PATH = os.path.join(HERE, "arcade.html")
 MODES = ("CLEAN", "ARMED", "IMPOSTOR")
 
 
@@ -79,8 +80,9 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         parsed = urlparse(self.path)
-        if parsed.path == "/":
-            with open(INDEX_PATH, "rb") as f:
+        if parsed.path in ("/", "/arcade"):
+            path = ARCADE_PATH if parsed.path == "/arcade" else INDEX_PATH
+            with open(path, "rb") as f:
                 body = f.read()
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
