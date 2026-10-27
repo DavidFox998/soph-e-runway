@@ -1,0 +1,605 @@
+{
+  "model": "sam-3.1",
+  "photos": [
+    {
+      "file": "true_01_front_white.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "8648f14878214388f8c01fbd10614c6171d487155c9eed7a19c4e7d9afa507a8",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "box-geometry proxy: aspect 1.57 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_02_side_counter.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "5afaf2cb334a5076683f4ea317b7d694f10bafc8c8ddaae35e28330ccbb6858a",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "box-geometry proxy: aspect 1.54 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_03_doorstep_box.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "2c072f5ae03d67c2b1cccb4a623fef4f8d5e124597e9b57193bdd50a60a79ba6",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "box-geometry proxy: aspect 1.43 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_04_table_warm.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "1c0ad3763e369be7ff6281d58a8f3646001126501f6c04b1d3f60f61c60f3c2e",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.96875,
+          "detail": "box-geometry proxy: aspect 1.69 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:form"
+      }
+    },
+    {
+      "file": "true_05_spout_closeup.jpg",
+      "expectation": "pass",
+      "records": 0,
+      "raw_ref": "0d4c3e83ce528ce8ec09c1c8d0e79cbc13a0879da6f231d77a7b80cd17dbe5d8",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to anchor color evidence"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "true_06_porch_openbox.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "127cf05079457384cdd512df52900f9f5a62740734a24466cd7caf9b35adcc02",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "box-geometry proxy: aspect 1.58 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_07_stovetop.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "f27962e65c4051d5d3913c2c4e7d2bb54a3f212827ffde640f59f85bc74e50b0",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.9609756469726562,
+          "detail": "box-geometry proxy: aspect 1.60 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:form"
+      }
+    },
+    {
+      "file": "true_08_steam_kitchen.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "2a6455afb55779baacfc399aee24d8b004eb7cb07c0c6f8ca474362c31d8bbb4",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "box-geometry proxy: aspect 1.59 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_09_lowangle_grey.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "0c223b1a64bbad2ad0d4b47acc219a17f1c2e681d01ecfc7eadfd6d09bc96aa6",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "box-geometry proxy: aspect 1.51 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9883041381835938,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_10_in_open_box.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "2374dc2c0f310356a99d9fdb871c48a49178164e487656b82918b50c61f47a3d",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9569892287254333,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9569892287254333,
+          "detail": "box-geometry proxy: aspect 1.16 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "true_11_counter_mugs.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "0b2895a7cdc72ff682119189a8e2d5629cf69e11e5d803a323caa9853e466c73",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9452055096626282,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.9452055096626282,
+          "detail": "box-geometry proxy: aspect 1.64 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9843749403953552,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:form"
+      }
+    },
+    {
+      "file": "true_12_straight_beige.jpg",
+      "expectation": "pass",
+      "records": 1,
+      "raw_ref": "2868cfbcbdc85067ef2e3ed1dbd6473f2c9f0472c34e48ea133e61e6ad290e15",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "box-geometry proxy: aspect 1.54 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9843749403953552,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "wrong_colour_black.jpg",
+      "expectation": "attribute_mismatch:colour",
+      "records": 1,
+      "raw_ref": "9fea732efdb56d18a36e26713f83858bbeb20565a9ff655b9f6b6e51a0c206b3",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.976608157157898,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.976608157157898,
+          "detail": "box-geometry proxy: aspect 1.52 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.96875,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "wrong_colour_silver.jpg",
+      "expectation": "attribute_mismatch:colour",
+      "records": 1,
+      "raw_ref": "72d1ae6b72b7f25b261ed3530be1fd7e263aa0790e8e013e11553d6662b46000",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.8827838897705078,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.8827838897705078,
+          "detail": "box-geometry proxy: aspect 1.72 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "zero records for the color phrase: wrong color or phrase sensitivity \u2014 undecidable, refuses"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "ambiguous:colour"
+      }
+    },
+    {
+      "file": "wrong_form_stovetop.jpg",
+      "expectation": "attribute_mismatch:form",
+      "records": 1,
+      "raw_ref": "77f2e4e345a7a10284a4b836ae0102721c4a1b1c13e2aed5454f23992a758a0d",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.5747508406639099,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.5747508406639099,
+          "detail": "box-geometry proxy: aspect 1.15 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9532163739204407,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "wrong_form_electric_jug.jpg",
+      "expectation": "attribute_mismatch:form",
+      "records": 1,
+      "raw_ref": "682f6b3d67cfac9593cc059ebfee8289f407a2702bd7d624ae1532e2e7b33302",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.7538461089134216,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.7538461089134216,
+          "detail": "box-geometry proxy: aspect 1.29 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.859649121761322,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "wrong_item_toaster.jpg",
+      "expectation": "item_absent",
+      "records": 0,
+      "raw_ref": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to anchor color evidence"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "box_only_empty.jpg",
+      "expectation": "item_absent",
+      "records": 0,
+      "raw_ref": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to anchor color evidence"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "packaging_only.jpg",
+      "expectation": "item_absent",
+      "records": 0,
+      "raw_ref": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to anchor color evidence"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "blurry_true_kettle.jpg",
+      "expectation": "ambiguous",
+      "records": 1,
+      "raw_ref": "f0fe2e18ca3a1ad37ad4b80493bf4f8bc09fdba861d8c4c646e092350d8dbbb5",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "box-geometry proxy: aspect 1.52 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9843749403953552,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    }
+  ]
+}

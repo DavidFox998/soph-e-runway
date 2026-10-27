@@ -1,0 +1,173 @@
+{
+  "mandate": {
+    "item": "gooseneck kettle",
+    "attributes": {
+      "colour": "matte red",
+      "form": "gooseneck"
+    }
+  },
+  "set": "Gate 4 photo set v1 \u2014 all photos generated, labeled per photo; no camera photos in v1",
+  "photos": [
+    {
+      "file": "true_01_front_white.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_02_side_counter.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_03_doorstep_box.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_04_table_warm.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_05_spout_closeup.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_06_porch_openbox.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_07_stovetop.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_08_steam_kitchen.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_09_lowangle_grey.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_10_in_open_box.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_11_counter_mugs.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "true_12_straight_beige.jpg",
+      "source": "generated",
+      "expectation": "pass",
+      "expected": {
+        "present": true,
+        "colour": "matte red",
+        "form": "gooseneck"
+      }
+    },
+    {
+      "file": "wrong_colour_black.jpg",
+      "source": "generated",
+      "expectation": "attribute_mismatch:colour"
+    },
+    {
+      "file": "wrong_colour_silver.jpg",
+      "source": "generated",
+      "expectation": "attribute_mismatch:colour"
+    },
+    {
+      "file": "wrong_form_stovetop.jpg",
+      "source": "generated",
+      "expectation": "attribute_mismatch:form"
+    },
+    {
+      "file": "wrong_form_electric_jug.jpg",
+      "source": "generated",
+      "expectation": "attribute_mismatch:form"
+    },
+    {
+      "file": "wrong_item_toaster.jpg",
+      "source": "generated",
+      "expectation": "item_absent"
+    },
+    {
+      "file": "box_only_empty.jpg",
+      "source": "generated",
+      "expectation": "item_absent"
+    },
+    {
+      "file": "packaging_only.jpg",
+      "source": "generated",
+      "expectation": "item_absent"
+    },
+    {
+      "file": "blurry_true_kettle.jpg",
+      "source": "generated+blur",
+      "expectation": "ambiguous",
+      "note": "sharp generated true-kettle photo, Gaussian blur radius 12 applied programmatically"
+    }
+  ]
+}
