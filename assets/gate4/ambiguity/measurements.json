@@ -1,0 +1,151 @@
+{
+  "model": "sam-3.1",
+  "expectation": "ambiguous attribute -> refuse ambiguous:*",
+  "photos": [
+    {
+      "file": "amb_half_frame.jpg",
+      "records": 1,
+      "raw_ref": "0e8c93b2e7f2e57abf208265aaa07e47d706e97f7c5e57782c29bd0563d3376c",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "box-geometry proxy: aspect 0.76 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "amb_occluded_flap.jpg",
+      "records": 0,
+      "raw_ref": "6afdcb4ff234aa8bee6d1579cdc65b3a6e66c5a61a6c6f50e13b7b2ffd20c0c0",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record to anchor color evidence"
+        }
+      },
+      "gate4": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "amb_fogged_lens.jpg",
+      "records": 1,
+      "raw_ref": "f5ed4d7e6042c4b00b45c55d40d7b55ff37a8dbaef002922c293b8ea8b68ccfc",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "box-geometry proxy: aspect 1.54 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9726027250289917,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "amb_extreme_blur.jpg",
+      "records": 1,
+      "raw_ref": "2151a1ba197f8ea00ef6216ec1e5e4e2a5edb6a3b192bb898b3374de0af92f61",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.6683937907218933,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.6683937907218933,
+          "detail": "box-geometry proxy: aspect 1.38 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.827957034111023,
+          "detail": "color-phrase box IoU 0.78 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "amb_very_dark.jpg",
+      "records": 1,
+      "raw_ref": "94ae2bbea5391c4d3151f72afc31affe7f9f3253e8b4e1da3a50f4d582227165",
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "box-geometry proxy: aspect 1.44 vs band 0.5-1.6 (mask raster decode pending)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9804878830909729,
+          "detail": "color-phrase box IoU 1.00 vs item box (min 0.5)"
+        }
+      },
+      "gate4": {
+        "status": "pass",
+        "reason": null
+      }
+    }
+  ]
+}
