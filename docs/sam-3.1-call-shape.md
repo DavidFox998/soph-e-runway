@@ -102,11 +102,32 @@ here is marked NOT ESTABLISHED and is what the probe variants test.
   - https://learnopencv.com/sam-3-whats-new/ citing Meta's
     segmentation limits at dev.meta.ai
 
-## Status
+## Status — PROBE VERIFIED 2026-10-26 evening
 
-- Facts 1, 3, 5: established from primary sources.
-- Fact 2: established except the image-part transport (URL vs base64),
-  which probe variants A/B decide.
-- Fact 4: documented; probe records the live envelope on failure.
-- Probe: `scripts/probe_sam.py` (shapes only, never verdicts), raw
-  artifacts under `artifacts/`. Adapter: `src/runway/sam.py`.
+Live probes ran against this account's key (artifacts:
+`artifacts/probe_A_20261027T014808Z.json`,
+`artifacts/probe_B_20261027T014808Z.json`):
+
+- **Both image transports work.** Variant A (`input_image` with a
+  fetchable `image_url`) and variant B (`image_url` as a base64 data
+  URL) each returned HTTP 200 with the full Responses event lifecycle
+  (`response.created` → `response.output_text.done` →
+  `response.completed`, 9 event types). Results were byte-identical:
+  one record for the probe image, box (237, 150)–(1742, 1155) in
+  1920×1280 media, confidence 0.9766 (the `include_confidence`
+  metadata works), mask raster 684×1024, lossless encoding.
+  **Variant B is the build default** — delivery photos need no
+  hosting.
+- The committed parser (`src/runway/sam.py`) accepted the live wire
+  text with no shape errors. Observed: the mask raster dimensions
+  (684×1024) are the mask's own, not the box's — recorded as seen,
+  not interpreted.
+- Fact 4 (error envelope) remains documented-only; no probe failed,
+  so no live error body has been captured yet.
+- Cost of the two probes: 2 images ≈ $0.005 against the credits.
+
+Remaining Gate 4 work (its own stage): the 12-true / 8-impostor
+photo set and the adapter confusion matrix over real delivery
+photos; mask raster decoding (for pixel-level color) stays out of
+the stdlib build — `matte_red` measures via the color-phrase
+overlap, and anything undecidable reports AMBIGUOUS.
