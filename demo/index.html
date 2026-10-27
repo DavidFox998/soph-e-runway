@@ -50,7 +50,8 @@
 <body>
 <header>
   <h1>SOPH-E <span>// THE RUNWAY</span></h1>
-  <span class="pill" id="beat-label">beat —</span>
+  <span class="pill" id="beat-label">stage —</span>
+  <span class="pill" id="score">SCORE — PASS 0 · REFUSED 0</span>
   <span>tamper <span class="pill clean" id="tamper-pill">CLEAN</span></span>
   <button data-mode="ARMED">Arm</button>
   <button data-mode="IMPOSTOR">Flip now</button>
@@ -59,6 +60,10 @@
   <span style="flex:1"></span>
   <span class="dim">runner</span><span id="pulse"></span>
 </header>
+
+<div style="padding:6px 16px; color:#57666e; letter-spacing:.18em; font-size:11px; border-bottom:1px solid #1e262b">
+  ONE MANDATE · ONE RED KETTLE · NO UNMEASURED INTERMEDIATE — THE REFUSAL IS A FIRST-CLASS OUTCOME
+</div>
 
 <main>
   <section>
@@ -91,6 +96,7 @@
 <footer>Measured, not minted — proven, not asserted. Team Pistis Sophia · Meta Global AI Developer Hackathon</footer>
 
 <div id="finale"><div class="card">
+  <div style="letter-spacing:.34em; color:#6d7f88; font-size:11px">— STAGE CLEAR —</div>
   <h2>RECEIPT SEALED</h2>
   <div class="hash" id="finale-hash"></div>
   <div id="finale-meta" style="margin-top:8px"></div>
@@ -100,7 +106,8 @@
 
 <script>
 "use strict";
-let lastSeq = 0, currentBeat = 0;
+let lastSeq = 0, currentBeat = 0, passCount = 0, refuseCount = 0;
+const STAGE_NAMES = { 1: 'CLEAN RUN', 2: 'TAMPER', 3: 'RECOVERY' };
 const claimsBody = document.getElementById('claims');
 const rows = {};           // claim_id -> <tr>
 const receiptTail = [];
@@ -150,7 +157,7 @@ function addRow(id, kind, subject, asserted) {
 function handle(ev) {
   const pulse = document.getElementById('pulse');
   pulse.classList.add('on'); setTimeout(() => pulse.classList.remove('on'), 300);
-  if (ev.beat) { currentBeat = ev.beat; document.getElementById('beat-label').textContent = 'beat ' + ev.beat + ' / 3'; }
+  if (ev.beat) { currentBeat = ev.beat; document.getElementById('beat-label').textContent = 'STAGE ' + ev.beat + ' · ' + (STAGE_NAMES[ev.beat] || ''); }
   switch (ev.kind) {
     case 'mandate.loaded':
       addRow('mandate-' + ev.beat, 'mandate', ev.item + ' · ' +
@@ -164,6 +171,8 @@ function handle(ev) {
              (ev.presentation === 'impostor' ? ' (impostor)' : ''), '—');
       break;
     case 'gate.verdict': {
+      if (ev.status === 'pass') passCount++; else refuseCount++;
+      document.getElementById('score').textContent = 'SCORE — PASS ' + passCount + ' · REFUSED ' + refuseCount;
       const pane = document.getElementById('gate-' + ev.gate);
       if (ev.gate === 'offer') {
         pane.querySelector('.big').innerHTML = verdictHtml(ev) +

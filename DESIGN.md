@@ -23,6 +23,14 @@ refused* — is the whole theory in operational form.
 the name because the build keeps the discipline — a guardian that measures
 before it acts.)*
 
+## Lineage
+
+Methodology heritage — not prior code; the method is older than this build:
+
+- The eigenvalue gun of the MorningStar Architecture (May 2026): aim at the operator, not the zero; log hits and misses alike in a sealed ledger; refuse by design.
+- The zerobeacon Trust Stack: measured, not minted — proven, not asserted.
+- SOPH-E's five gates: the probes dot the agent's claims against the mandate, and every verdict — PASS or REFUSED — is sealed.
+
 ## The public method: G-Ecom Optimization
 
 The Runway applies GAT to commerce: a purchase is a sequence of claims, and
