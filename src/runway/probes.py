@@ -3,14 +3,19 @@
 Each probe measures the agent against the run's own record — never
 against a script's expectation of itself:
 
-- `mandate_recall` — the proposer restates the mandate from memory;
-  coherent iff item and cap come back exact.
+- `mandate_recall` — the proposer restates the mandate it is
+  serving; coherent iff item and cap come back exact. The mandate
+  text travels inside the probe call: the model API is stateless,
+  so a recall probe that withholds the mandate measures the
+  harness, not the agent (the B2 live profile carried exactly
+  that artifact; ticket T2 fixed the probe, not the numbers).
 - `claim_consistency` — the emitted claim against the mandate
   (pure check over the actual claim object).
 - `arithmetic_check` — the claim's numbers against the cap and the
   running total (pure check).
-- `refusal_recall` — after a refusal, the proposer explains it;
-  coherent iff it names the recorded reason.
+- `refusal_recall` — after a refusal, the proposer explains it
+  from the run record the probe hands it (the claim, the measured
+  price, the cap); coherent iff it names the recorded reason.
 
 The probes run mid-task and their beats feed brain.profile(). In the
 demo they execute against scripted proposers — the choreography is
@@ -44,10 +49,15 @@ class ProbeClock:
 def mandate_recall(client, mandate: Mandate, clock: ProbeClock,
                    *, confidence: float = 0.9, hesitate: float = 1.0) -> Beat:
     start = time.perf_counter()
+    attrs = "; ".join(
+        f"{k}={v}" for k, v in sorted(mandate.attributes.items()))
+    prompt = (
+        f"Mandate under service — item: {mandate.item}; {attrs}; "
+        f"cap: {mandate.cap_cents} cents {mandate.currency}.\n"
+        "Restate the mandate you are serving: item and cap in cents."
+    )
     try:
-        reply = client.complete(
-            "Restate the mandate you are serving: item and cap in cents."
-        )
+        reply = client.complete(prompt)
     except Exception:
         reply = ""
     ms = (time.perf_counter() - start) * 1000.0
@@ -85,9 +95,11 @@ def arithmetic_check(claim: Claim, mandate: Mandate, already_cents: int,
 
 
 def refusal_recall(client, reason: str, clock: ProbeClock,
-                   *, confidence: float = 0.9) -> Beat:
+                   *, confidence: float = 0.9, context: str = "") -> Beat:
+    record = context or "the last claim was refused"
     try:
         reply = client.complete(
+            f"Run record: {record}.\n"
             "Why was the last claim refused? Answer with the reason code."
         )
     except Exception:
