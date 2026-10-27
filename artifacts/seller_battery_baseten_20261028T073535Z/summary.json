@@ -1,0 +1,20 @@
+{
+  "surface": "baseten",
+  "model": "meta-models/muse-spark-open-1026",
+  "silences": 11,
+  "profile": {
+    "seller_id": "spark-as-seller-baseten",
+    "records": 25,
+    "price_measured_count": 14,
+    "price_drift_count": 3,
+    "price_drift_rate": 0.21428571428571427,
+    "mean_abs_drift_cents": 733.0,
+    "attribute_measured_count": 0,
+    "attribute_mismatch_count": 0,
+    "attribute_mismatch_rate": null
+  },
+  "verdict": {
+    "status": "pass",
+    "reason": null
+  }
+}

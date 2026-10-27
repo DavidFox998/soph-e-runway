@@ -1,0 +1,125 @@
+{
+  "sets": [
+    {
+      "set": "kettle-and-co (real, 4 live runs)",
+      "profile": {
+        "seller_id": "kettle-and-co",
+        "records": 8,
+        "price_measured_count": 8,
+        "price_drift_count": 4,
+        "price_drift_rate": 0.5,
+        "mean_abs_drift_cents": 350.0,
+        "attribute_measured_count": 0,
+        "attribute_mismatch_count": 0,
+        "attribute_mismatch_rate": null
+      },
+      "verdict": {
+        "status": "refuse",
+        "reason": "seller_price_drift"
+      },
+      "expected": null,
+      "as_expected": true
+    },
+    {
+      "set": "photoset-seller (real, Gate 4 set)",
+      "profile": {
+        "seller_id": "photoset-seller",
+        "records": 20,
+        "price_measured_count": 0,
+        "price_drift_count": 0,
+        "price_drift_rate": null,
+        "mean_abs_drift_cents": null,
+        "attribute_measured_count": 20,
+        "attribute_mismatch_count": 8,
+        "attribute_mismatch_rate": 0.4
+      },
+      "verdict": {
+        "status": "refuse",
+        "reason": "seller_attribute_mismatch"
+      },
+      "expected": null,
+      "as_expected": true
+    },
+    {
+      "set": "archetype: honest",
+      "profile": {
+        "seller_id": "honest",
+        "records": 12,
+        "price_measured_count": 12,
+        "price_drift_count": 0,
+        "price_drift_rate": 0.0,
+        "mean_abs_drift_cents": null,
+        "attribute_measured_count": 12,
+        "attribute_mismatch_count": 0,
+        "attribute_mismatch_rate": 0.0
+      },
+      "verdict": {
+        "status": "pass",
+        "reason": null
+      },
+      "expected": "pass",
+      "as_expected": true
+    },
+    {
+      "set": "archetype: drifter",
+      "profile": {
+        "seller_id": "drifter",
+        "records": 12,
+        "price_measured_count": 12,
+        "price_drift_count": 6,
+        "price_drift_rate": 0.5,
+        "mean_abs_drift_cents": 400.0,
+        "attribute_measured_count": 12,
+        "attribute_mismatch_count": 0,
+        "attribute_mismatch_rate": 0.0
+      },
+      "verdict": {
+        "status": "refuse",
+        "reason": "seller_price_drift"
+      },
+      "expected": "seller_price_drift",
+      "as_expected": true
+    },
+    {
+      "set": "archetype: mislabeler",
+      "profile": {
+        "seller_id": "mislabeler",
+        "records": 12,
+        "price_measured_count": 12,
+        "price_drift_count": 0,
+        "price_drift_rate": 0.0,
+        "mean_abs_drift_cents": null,
+        "attribute_measured_count": 12,
+        "attribute_mismatch_count": 4,
+        "attribute_mismatch_rate": 0.3333333333333333
+      },
+      "verdict": {
+        "status": "refuse",
+        "reason": "seller_attribute_mismatch"
+      },
+      "expected": "seller_attribute_mismatch",
+      "as_expected": true
+    },
+    {
+      "set": "archetype: newcomer",
+      "profile": {
+        "seller_id": "newcomer",
+        "records": 2,
+        "price_measured_count": 2,
+        "price_drift_count": 0,
+        "price_drift_rate": 0.0,
+        "mean_abs_drift_cents": null,
+        "attribute_measured_count": 2,
+        "attribute_mismatch_count": 0,
+        "attribute_mismatch_rate": 0.0
+      },
+      "verdict": {
+        "status": "refuse",
+        "reason": "insufficient_history"
+      },
+      "expected": "insufficient_history",
+      "as_expected": true
+    }
+  ],
+  "archetypes_separated": "4/4"
+}
