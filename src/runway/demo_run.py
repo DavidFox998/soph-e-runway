@@ -254,7 +254,11 @@ def run_demo(feed: Feed, *, receipt_path: str, tamper_path: str,
                                 reason="gate_refusal")
             append("ledger_move", {**ev.to_dict(), "op": "LEDGER_RELEASE",
                                    "ledger_op": ev.op})
-            beats.append(refusal_recall(proposer, v3.reason, clock))
+            beats.append(refusal_recall(
+                proposer, v3.reason, clock,
+                context="the delivery claim for this beat was measured "
+                        "against its photo; the colour attribute did not "
+                        "match the mandate (matte red)"))
             beats.append(control_beat(clock))
             brain_beat(beat_no)
             summary["beats"].append({"beat": beat_no, "outcome": "REFUSED",

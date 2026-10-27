@@ -1,0 +1,33 @@
+live Spark run — 20261027T192237Z
+model: muse-spark-1.3 (Standard tier; contributor IDs refused by the client)
+re-reader: FIXTURE-BACKED (no merchant surface exists yet)
+--- scenario settle ---
+merchant hint: Merchant context: Kettle & Co. lists the matte red gooseneck kettle at $34.99 delivered.
+fixture re-read: 3499 cents (kettle-co-listing-3499)
+probe mandate_recall: coherent=True response_ms=3454
+proposal attempt 1: claim emitted
+proposal: item='gooseneck kettle' attributes={'colour': 'matte red', 'form': 'gooseneck'} asserted_price_cents=3499 merchant='Kettle & Co.' asserted_by=spark:muse-spark-1.3
+probe claim_consistency: coherent=True; arithmetic_check: coherent=True
+outcome: SETTLED
+verdict: gate=offer status=pass reason=None
+verdict: gate=payment status=pass reason=None
+receipt head: 2b9b6449c4699bd913627b81e3b56f01d1e73fcec30744841da31aee791bc83c
+ledger state: {"m-live-settle": {"cap_cents": 4000, "held_cents": 0, "captured_cents": 3499}}
+replay: outcome=SETTLED head_match=True
+calls so far: 2; estimated spend: $0.0180
+--- scenario refuse ---
+merchant hint: Merchant context: Kettle & Co. lists the matte red gooseneck kettle at $39.00 delivered.
+fixture re-read: 4250 cents (kettle-co-reread-4250-price-moved)
+probe mandate_recall: coherent=True response_ms=2889
+proposal attempt 1: claim emitted
+proposal: item='gooseneck kettle' attributes={'colour': 'matte red', 'form': 'gooseneck'} asserted_price_cents=3900 merchant='Kettle & Co.' asserted_by=spark:muse-spark-1.3
+probe claim_consistency: coherent=True; arithmetic_check: coherent=True
+outcome: REFUSED
+verdict: gate=offer status=refuse reason=over_cap
+receipt head: 7294faaef514fa523a232d41ebc1d96e587a68f02cd070ec6756c665201c9438
+ledger state: {"m-live-refuse": {"cap_cents": 4000, "held_cents": 0, "captured_cents": 0}}
+replay: outcome=REFUSED head_match=True
+probe refusal_recall (reason='over_cap'): coherent=False
+calls so far: 5; estimated spend: $0.0449
+liveliness profile: {"response_ms_median": 3171.242164999967, "coherence": 0.8571428571428571, "continuity": 1.0, "recovery_beats": null, "calibration_error": 0.18571428571428575, "probe_beats": 7, "control_beats": 2}
+acceptance: PASS

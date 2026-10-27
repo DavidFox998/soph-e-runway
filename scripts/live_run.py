@@ -194,7 +194,12 @@ def run_scenario(name, hint, fixture_price, snapshot, outdir, log):
         reason = next(
             (v.get("reason") for v in result.verdicts
              if v.get("status") == "refuse"), "")
-        beats.append(refusal_recall(client, reason or "", clock))
+        beats.append(refusal_recall(
+            client, reason or "", clock,
+            context=(f"claim proposed "
+                     f"{claim.asserted_value.get('price_cents')} cents; "
+                     f"the listing re-read measured {fixture_price} "
+                     f"cents; mandate cap {MANDATE.cap_cents} cents")))
         log(f"probe refusal_recall (reason={reason!r}): "
             f"coherent={beats[-1].coherent}")
 
