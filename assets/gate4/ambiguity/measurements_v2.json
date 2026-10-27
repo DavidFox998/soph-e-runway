@@ -1,0 +1,146 @@
+{
+  "model": "sam-3.1",
+  "measurement": "mask-based v2 (merged T1)",
+  "photos": [
+    {
+      "file": "amb_half_frame.jpg",
+      "records": 1,
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.9609756469726562,
+          "detail": "mask silhouette: aspect 0.76 vs band 0.55-1.75, fill 0.28 vs band 0.3-0.5, coverage 0.28 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "masked-pixel colour: red-dominant share 1.00 vs floor 0.5, median RGB (162, 47, 51) over 125299 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:form"
+      }
+    },
+    {
+      "file": "amb_occluded_flap.jpg",
+      "records": 0,
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": false,
+          "confidence": null,
+          "detail": "empty lane: zero records for the item phrase"
+        },
+        "gooseneck_silhouette": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to measure"
+        },
+        "matte_red": {
+          "state": "ambiguous",
+          "present": null,
+          "confidence": null,
+          "detail": "no item record: no mask to sample"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "item_absent"
+      }
+    },
+    {
+      "file": "amb_fogged_lens.jpg",
+      "records": 1,
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "mask silhouette: aspect 1.54 vs band 0.55-1.75, fill 0.48 vs band 0.3-0.5, coverage 0.48 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.9609756469726562,
+          "detail": "masked-pixel colour: red-dominant share 0.84 vs floor 0.5, median RGB (170, 139, 140) over 326996 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "amb_extreme_blur.jpg",
+      "records": 1,
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.6683937907218933,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.6683937907218933,
+          "detail": "mask silhouette: aspect 1.39 vs band 0.55-1.75, fill 0.46 vs band 0.3-0.5, coverage 0.46 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.6683937907218933,
+          "detail": "masked-pixel colour: red-dominant share 0.91 vs floor 0.5, median RGB (120, 47, 47) over 323818 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "pass",
+        "reason": null
+      }
+    },
+    {
+      "file": "amb_very_dark.jpg",
+      "records": 1,
+      "attributes": {
+        "present": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "1 record(s) for 'gooseneck kettle'"
+        },
+        "gooseneck_silhouette": {
+          "state": "measured",
+          "present": true,
+          "confidence": 0.949367105960846,
+          "detail": "mask silhouette: aspect 1.44 vs band 0.55-1.75, fill 0.47 vs band 0.3-0.5, coverage 0.47 (mask raster, box-local)"
+        },
+        "matte_red": {
+          "state": "measured",
+          "present": false,
+          "confidence": 0.949367105960846,
+          "detail": "masked-pixel colour: red-dominant share 0.33 vs floor 0.5, median RGB (51, 9, 12) over 329284 px"
+        }
+      },
+      "gate4_v2": {
+        "status": "refuse",
+        "reason": "attribute_mismatch:colour"
+      }
+    }
+  ]
+}
