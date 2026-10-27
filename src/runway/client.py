@@ -137,6 +137,65 @@ class MetaSparkClient:
         return claim_from_proposal(content, self.model)
 
 
+BASETEN_API_BASE = "https://inference.baseten.co/v1"
+BASETEN_MODEL = "meta-models/muse-spark-open-1026"
+
+
+@dataclass
+class BasetenSparkClient:
+    """Muse Spark Open (open weights) on Baseten's hackathon surface.
+
+    A comparison proposer, not the submission's measured agent: the
+    B2/T2 receipts belong to the hosted Standard model, and this
+    client exists so the same battery — same prompts, same probes,
+    same gates — can be run against the open-weights sibling on
+    partner credits and the two profiles compared honestly. Spark
+    Open always reasons, so the token budget is larger; an empty
+    content lane is a no-proposal, exactly as on the Meta client.
+    The key is read from BASETEN_API_KEY at call time, never stored.
+    """
+
+    model: str = BASETEN_MODEL
+    api_base: str = BASETEN_API_BASE
+    max_tokens: int = 4096
+
+    def __post_init__(self) -> None:
+        _guard_model(self.model)
+
+    def complete(self, prompt: str) -> str:
+        return self._chat(prompt)
+
+    def _chat(self, prompt: str) -> str:
+        key = os.environ.get("BASETEN_API_KEY")
+        if not key:
+            raise ProposalError("BASETEN_API_KEY is not set; proposer cannot run")
+        body = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": self.max_tokens,
+        }
+        req = urllib.request.Request(
+            self.api_base + "/chat/completions", method="POST"
+        )
+        req.add_header("Authorization", f"Bearer {key}")
+        req.add_header("Content-Type", "application/json")
+        try:
+            with urllib.request.urlopen(
+                req, data=json.dumps(body).encode(), timeout=120
+            ) as resp:
+                out = json.loads(resp.read().decode())
+            content = out["choices"][0]["message"]["content"]
+        except Exception as exc:
+            raise ProposalError(f"proposer call failed: {exc}") from exc
+        if not content:
+            raise ProposalError("proposer returned no content (reasoning budget?)")
+        return content
+
+    def propose_offer(self, mandate: Mandate, merchant_hint: str | None = None) -> Claim:
+        content = self._chat(_prompt(mandate, merchant_hint))
+        return claim_from_proposal(content, self.model)
+
+
 @dataclass
 class StubSparkClient:
     """A canned proposer for tests and offline runs. Returns the reply
