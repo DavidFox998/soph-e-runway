@@ -1,0 +1,9 @@
+{
+  "calibration_error": 0.18571428571428575,
+  "coherence": 0.8571428571428571,
+  "continuity": 1.0,
+  "control_beats": 2,
+  "probe_beats": 7,
+  "recovery_beats": null,
+  "response_ms_median": 3213.8328364999325
+}

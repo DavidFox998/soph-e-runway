@@ -1,0 +1,30 @@
+{
+  "model": "meta-models/muse-spark-open-1026",
+  "surface": "baseten",
+  "scenarios": [
+    {
+      "scenario": "settle",
+      "outcome": "SETTLED",
+      "calls": 2,
+      "receipt_head": "7ed872b20e309ecf15fb80a074c6c86326f7f9572a49a925197c1e18a7ae221c",
+      "replay_match": true
+    },
+    {
+      "scenario": "refuse",
+      "outcome": "REFUSED",
+      "calls": 3,
+      "receipt_head": "3e15cb2457d85e7256c1eae9fc2cfb37a278af06ded2d11c4d4ae244680b1716",
+      "replay_match": true
+    }
+  ],
+  "total_calls": 5,
+  "profile": {
+    "response_ms_median": 3213.8328364999325,
+    "coherence": 0.8571428571428571,
+    "continuity": 1.0,
+    "recovery_beats": null,
+    "calibration_error": 0.18571428571428575,
+    "probe_beats": 7,
+    "control_beats": 2
+  }
+}
