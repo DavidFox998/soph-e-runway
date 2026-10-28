@@ -150,7 +150,7 @@ def main():
         results.append(r)
         all_beats.extend(r["beats"])
 
-    prof = profile(all_beats)
+    prof = profile(all_beats).to_dict()
     log(f"liveliness profile: {json.dumps(prof, sort_keys=True)}")
     total_calls = sum(r["calls"] for r in results)
     log(f"total Baseten calls: {total_calls} (against the $100 grant)")
