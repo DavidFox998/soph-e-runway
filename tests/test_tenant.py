@@ -2,7 +2,7 @@ import pytest
 
 from runway.client import MetaSparkClient, ProposalError, StubSparkClient
 from runway.gates import Mandate
-from runway.shopper import Shopper
+from runway.tenant import Tenant
 
 MANDATE = Mandate(
     item="gooseneck kettle",
@@ -18,7 +18,7 @@ GOOD_REPLY = (
 
 
 def test_mandate_in_typed_claim_out():
-    claim = Shopper(StubSparkClient(GOOD_REPLY)).propose(MANDATE)
+    claim = Tenant(StubSparkClient(GOOD_REPLY)).propose(MANDATE)
     assert claim.kind == "offer"
     assert claim.subject["item"] == "gooseneck kettle"
     assert claim.subject["attributes"]["colour"] == "matte red"
@@ -27,18 +27,18 @@ def test_mandate_in_typed_claim_out():
 
 
 def test_proposal_is_unmeasured_by_construction():
-    claim = Shopper(StubSparkClient(GOOD_REPLY)).propose(MANDATE)
+    claim = Tenant(StubSparkClient(GOOD_REPLY)).propose(MANDATE)
     assert claim.measurement is None
     assert claim.verdict_status == "pending"
 
 
 def test_malformed_proposal_emits_no_claim():
     with pytest.raises(ProposalError):
-        Shopper(StubSparkClient("the kettle is nice, trust me")).propose(MANDATE)
+        Tenant(StubSparkClient("the kettle is nice, trust me")).propose(MANDATE)
 
 
 def test_fenced_json_still_parses():
-    claim = Shopper(StubSparkClient("```json\n" + GOOD_REPLY + "\n```")).propose(MANDATE)
+    claim = Tenant(StubSparkClient("```json\n" + GOOD_REPLY + "\n```")).propose(MANDATE)
     assert claim.asserted_value["price_cents"] == 3850
 
 

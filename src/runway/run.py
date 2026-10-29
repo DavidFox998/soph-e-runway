@@ -1,4 +1,4 @@
-"""The runner (build Stage 2): the chain becomes a run.
+"""The environment (build Stage 2): the chain becomes a run.
 
 One live pass per claim:
 
@@ -9,7 +9,7 @@ short-circuits: RUN_REFUSED is appended, every open hold is released
 (ledger reason `gate_refusal`), HOLDS_RELEASED is appended, and the run
 returns REFUSED. **A refusal is a return value, not an exception.**
 
-`replay` re-derives a run from its sealed receipt alone — no shopper,
+`replay` re-derives a run from its sealed receipt alone — no tenant,
 no network — and must reproduce the outcome, every verdict, and the
 head hash bit-for-bit. Entry kinds stay within the receipt schema;
 the operation lives in each payload's `op`.
@@ -45,7 +45,7 @@ class RunResult:
             raise ValueError(f"unknown outcome {self.outcome!r}")
 
 
-class Runner:
+class Environment:
     """Drives one mandate's run. Construct, submit claims, then settle
     (implicit in run_mandate) — or watch it refuse."""
 
@@ -150,7 +150,7 @@ class Runner:
             claim_id=f"{claim.claim_id}:payment",
             kind="payment",
             subject={"item": self.mandate.item},
-            asserted_by="runner",
+            asserted_by="environment",
             asserted_value={"amount_cents": amount},
             measurement=Measurement(
                 measured_by=measurement.measured_by,
@@ -222,16 +222,16 @@ def run_mandate(mandate: Mandate,
     Any refusal -> short-circuit REFUSED. The receipt is written to
     receipt_path as JSONL either way — a refused run is still a run,
     and its receipt is the proof."""
-    runner = Runner(mandate, run_id=run_id, mandate_id=mandate_id, clock=clock)
+    environment = Environment(mandate, run_id=run_id, mandate_id=mandate_id, clock=clock)
     result: RunResult | None = None
     for claim in proposals:
-        result = runner.submit_claim(claim, measurer(claim))
+        result = environment.submit_claim(claim, measurer(claim))
         if result is not None:
             break
     if result is None:
-        result = runner.settle()
+        result = environment.settle()
     with open(receipt_path, "w", encoding="utf-8") as f:
-        f.write(runner.chain.to_jsonl() + "\n")
+        f.write(environment.chain.to_jsonl() + "\n")
     return result
 
 

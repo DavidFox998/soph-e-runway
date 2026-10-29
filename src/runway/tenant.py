@@ -1,12 +1,13 @@
-"""The shopper (build Stage 1): mandate in, typed claim out.
+"""The tenant (build Stage 1): mandate in, typed claim out.
 
-The shopper is the proposer half of SOPH-E and it is structurally
+The tenant is the proposer inside the environment — Muse Spark
+in this implementation — and it is structurally
 incapable of spending: this module has no payment import, no ledger
 handle, no rail. Its only output is a Claim — an assertion with the
 proposer's name on it and no measurement — which the gates may pass,
 refuse, or ignore. Everything else in the system bolts onto this spine:
-gates judge what the shopper proposes, the receipt chain seals the
-judgments, the brain watches the shopper work.
+gates judge what the tenant proposes, the receipt chain seals the
+judgments, the brain watches the tenant work.
 
 Propose-only invariants, checked on every proposal:
 - the claim is an offer claim
@@ -24,7 +25,7 @@ from .gates import Mandate
 
 
 @dataclass
-class Shopper:
+class Tenant:
     client: SparkClient
 
     def propose(self, mandate: Mandate, merchant_hint: str | None = None) -> Claim:

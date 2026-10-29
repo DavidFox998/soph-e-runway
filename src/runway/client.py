@@ -1,6 +1,6 @@
 """Spark clients: anything that can turn a mandate into a proposed offer.
 
-The shopper's proposer is Muse Spark over the Meta Model API
+The tenant's proposer is Muse Spark over the Meta Model API
 (OpenAI-compatible chat). Two disciplines are enforced in this module:
 
 - **Standard tier only.** A model ID ending in `-contributor` is refused

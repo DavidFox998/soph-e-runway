@@ -27,7 +27,7 @@ class Verdict:
             raise ValueError("a refusal must name its reason")
 
 
-@dataclass
+@dataclass(frozen=True)
 class Mandate:
     """A client mandate in exact, checkable terms."""
 
