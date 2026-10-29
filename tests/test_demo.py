@@ -28,7 +28,7 @@ def test_feed_closed_set_is_enforced(tmp_path):
     feed = Feed(str(tmp_path / "e.jsonl"))
     feed.emit("mandate.loaded", {"beat": 1})
     with pytest.raises(FeedError):
-        feed.emit("runner.vibes", {})
+        feed.emit("environment.vibes", {})
     events, head = read_events(str(tmp_path / "e.jsonl"), since=0)
     assert head == 1 and events[0]["kind"] == "mandate.loaded"
     events2, _ = read_events(str(tmp_path / "e.jsonl"), since=1)

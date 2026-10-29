@@ -1,7 +1,7 @@
 """The demo feed (Q3): one JSON object per line, a closed event set.
 
 The demo UI consumes ONLY this feed — it never imports runway
-modules. The runner side appends; the server side reads with
+modules. The environment side appends; the server side reads with
 `since=` cursors. An event outside the closed set is a code error:
 the feed is a contract, not a log file.
 """

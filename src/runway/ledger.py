@@ -7,7 +7,7 @@ the ledger's invariant is checked on every mutation:
 
 Idempotency: every mutating call takes an idempotency key. Repeating a
 key returns the ORIGINAL event and changes nothing — a retried hold can
-never double-hold. Runner keys follow `{run_id}:{seq}:{gate}`.
+never double-hold. Environment keys follow `{run_id}:{seq}:{gate}`.
 
 Assumption, stated plainly: single-threaded, in-memory, with an optional
 JSON snapshot. This is a demo rail, not a payments system; the shape is

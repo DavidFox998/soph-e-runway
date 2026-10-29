@@ -1,4 +1,4 @@
-"""Q1 acceptance: refusal-first runner + ledger tests."""
+"""Q1 acceptance: refusal-first environment + ledger tests."""
 
 import pytest
 

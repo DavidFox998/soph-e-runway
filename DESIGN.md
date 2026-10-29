@@ -1,4 +1,19 @@
-# SOPH-E / Runway — design notes
+# Environment Protocol v0 — design notes
+## Reference implementation: Apathy-Refusal (commerce)
+
+This repository is the reference implementation of **Environment
+Protocol v0** (see `README.md` for the protocol itself: six components,
+four message types — claim → measurement → verdict → receipt — and the
+invariants). What follows is the design record of the one profile
+implemented here: **Apathy-Refusal**, the environment that governs
+*truth* — its question of every act is *was it measured?* The tenant is
+Muse Spark (the demo calls her SOPH-E); the environment is the Runway,
+a commerce environment. One conformance note, carried from the protocol:
+the protocol names three verdicts (pass, refuse, ambiguous); this
+implementation maps undecidable to a named refusal — where instruments
+cannot decide, the gate refuses on weak measurement rather than emitting
+a third verdict. Ambiguous exists here as a measurement state, always
+resolved to refuse-with-reason.
 
 ## Foundation: Gadiel Alignment Theory (GAT)
 
@@ -43,7 +58,10 @@ re-measured before it is paid for.
 
 Everything the agent wants the system to believe is a **claim**: a typed,
 attributed assertion with the evidence it rests on and the verdict it
-received. A claim with no measurement has no path to a payment.
+received. A claim with no measurement has no path to a payment. Claims
+are the first of the protocol's four message types — **claim →
+measurement → verdict → receipt** — and the schemas in `schemas/` are
+their wire form.
 
 ### Gates (`src/runway/gates.py`)
 
@@ -118,9 +136,9 @@ not verify, refuses.
 The five gates keep their names (Mandate / Offer / Payment / Delivery /
 Receipt). The build proceeds in David's stages:
 
-- **Stage 1 — Spark shopper skeleton.** Mandate in, typed claim out.
+- **Stage 1 — Spark tenant skeleton.** Mandate in, typed claim out.
   Wired so it can't spend, only propose: the spine everything bolts
-  onto. ✅ landed Day 0 (`client.py`, `shopper.py`).
+  onto. ✅ landed Day 0 (`client.py`, `tenant.py`).
 - **Stage 2 — Offer + Payment gates as the run's real path**, with the
   hashed receipt chain started: every verdict appended as it happens.
   (Gate code and chain exist from the scaffold; this stage wires them

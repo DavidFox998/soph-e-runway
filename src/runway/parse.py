@@ -17,7 +17,7 @@ validator re-checks every field against the source text itself:
   attribute the user never typed is an invention: UNCLEAR_ATTRIBUTE.
 - A vague item ("a nice kettle") is VAGUE_ITEM.
 
-Malformed model replies emit NO mandate (the shopper.py precedent).
+Malformed model replies emit NO mandate (the tenant.py precedent).
 Both outcomes — parsed and refused — are hash-chained when a chain
 is supplied.
 """

@@ -182,7 +182,7 @@ def run_demo(feed: Feed, *, receipt_path: str, tamper_path: str,
         acct = ledger.accounts[mid]
         pay = Claim(
             claim_id=f"{claim.claim_id}:payment", kind="payment",
-            subject={"item": MANDATE.item}, asserted_by="runner",
+            subject={"item": MANDATE.item}, asserted_by="environment",
             asserted_value={"amount_cents": PRICE},
             measurement=Measurement(
                 measured_by="offer-rereader",
