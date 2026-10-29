@@ -185,6 +185,35 @@ class Environment:
                           ts=self.clock())
         return None
 
+    def refuse(self, verdict: Verdict,
+               claim: Claim | None = None) -> RunResult:
+        """Seal a refusal decided by a gate outside the core pass —
+        a composed profile's gate (consent, custody) that sits
+        around this environment.
+
+        The verdict is applied to the claim (when given) and
+        appended to the chain as a gate_verdict entry, then the run
+        closes through the same refusal path as a core-gate
+        refusal: RUN_REFUSED, every open hold released, chain
+        verifiable, receipt replayable. A refusal is a return
+        value, not an exception. This is the public form of the
+        refusal path; profile code must not reach for internals.
+        """
+        if self.closed:
+            raise RuntimeError("run is closed")
+        if verdict.status != "refuse":
+            raise ValueError("refuse() requires a refusal verdict")
+        if claim is not None:
+            claim.verdict_status = verdict.status
+            claim.verdict_reason = verdict.reason
+            claim.verdict_gate = verdict.gate
+        self.chain.append("gate_verdict", {
+            "op": "GATE_VERDICT", "gate": verdict.gate,
+            "status": verdict.status, "reason": verdict.reason,
+            "claim_id": claim.claim_id if claim is not None else None,
+        }, ts=self.clock())
+        return self._refuse(verdict)
+
     def settle(self) -> RunResult:
         if self.closed:
             return self._result()
